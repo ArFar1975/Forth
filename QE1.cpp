@@ -7,11 +7,11 @@ double cgetter();
 int main()
 {
     double a, b, c, d;
+    printf("Hello! This program can solve quadratic equations:\na*x^2 + b*x + c = 0\n");
     a = agetter();
     b = bgetter();
     c = cgetter();
-    d = b*b -
-    4.0*a*c;
+    d = b*b - 4.0*a*c;
     if (d < 0) {
         printf("This equation has no real roots");
         }
@@ -29,12 +29,13 @@ int main()
 double agetter()
 {
     double a;
-    printf("Put \"a\" here:");
-    scanf("%lf", &a);
-        if (fabs(a-0) < ESP) {
+    a = 0;
+    while (fabs(a-0) < ESP) {
+        printf("Put \"a\" here:");
+        scanf("%lf", &a);
+        if (fabs(a-0) < ESP)
             printf("Error! For a = 0 , this equation is not a quadratic equation! Try again!\n");
-            agetter();
-        }
+    }
 
     return a;
 }

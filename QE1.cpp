@@ -29,13 +29,12 @@ int main()
 double agetter()
 {
     double a;
-    a = 0;
-    while (fabs(a-0) < ESP) {
+    do {
         printf("Put \"a\" here:");
         scanf("%lf", &a);
         if (fabs(a-0) < ESP)
             printf("Error! For a = 0 , this equation is not a quadratic equation! Try again!\n");
-    }
+    } while (fabs(a-0) < ESP);
 
     return a;
 }

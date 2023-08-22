@@ -1,19 +1,23 @@
 #include <TXLib.h>
 
 const double EPS = 0.1e-36;
+
 const int NullSolves = 0;
 const int OneSolve = 1;
 const int TwoSolves = 2;
 const int InfSolves = 3;
 
 int solve_quadr_equation(double a, double b, double c, double* x1, double* x2);
+int solve_lin_equation(double b, double c, double* x1, double* x2);
+
 double input_coef(char name);
 bool isZero(double number);
+void greet();
 //void kill_infinity();
 
 int main()
 {
-    printf("Hello! This program can solve quadratic equations:\na*x^2 + b*x + c = 0\n");
+    greet();
 
     double x1 = 0, x2 = 0;
 
@@ -51,34 +55,23 @@ double input_coef(char name)
     return coef;
 }
 
-int solve_quadr_equation(const double c, const double b, const double a, double* x1, double* x2) {
+int solve_quadr_equation(const double c, const double b, const double a, double* x1, double* x2)
+{
     if (isZero(a))
     {
         printf("\aFor a = 0 , this equation is not a quadratic equation!\n");
         printf("But we can solve it special for you ;)\n");
 
-        if (isZero(b) == 0)
-        {
-            *x1 = *x2 = -c / b;
-
-            return OneSolve;
-        }
-        else if (isZero(b) && isZero(c))
-        {
-            return InfSolves;
-        }
-        else
-        {
-            return NullSolves;
-        }
+        return solve_lin_equation(b, c, x1, x2);
     }
     else
     {
         double d = b * b - 4.0 * a * c;
         if (isZero(d))
         {
-            return NullSolves;
             *x1 = *x2 = (-b / (2.0 * a));
+
+            return OneSolve;
         }
         else if (d > EPS)
         {
@@ -99,7 +92,27 @@ bool isZero(double r)
 {
     return fabs(r) < EPS;
 }
+void greet()
+{
+    printf("Hello! This program can solve quadratic equations:\na*x^2 + b*x + c = 0\n");
+}
+int solve_lin_equation(double b, double c, double* x1, double* x2)
+{
+        if (isZero(b) == 0)
+        {
+            *x1 = *x2 = -c / b;
 
+            return OneSolve;
+        }
+        else if (isZero(b) && isZero(c))
+        {
+            return InfSolves;
+        }
+        else
+        {
+            return NullSolves;
+        }
+}
 /*void kill_infinity()
 {
     while(getchar() != '\n') {}

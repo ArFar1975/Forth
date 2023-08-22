@@ -7,9 +7,7 @@ const int TwoSolves = 2;
 const int InfSolves = 3;
 
 int solve_quadr_equation(double a, double b, double c, double* x1, double* x2);
-double input_a();
-double input_b();
-double input_c();
+double input_coef(char name);
 bool isZero(double number);
 //void kill_infinity();
 
@@ -19,7 +17,7 @@ int main()
 
     double x1 = 0, x2 = 0;
 
-    switch(solve_quadr_equation(input_c(), input_b(), input_a(), &x1, &x2))
+    switch(solve_quadr_equation(input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2))
     {
         case NullSolves:
             printf("This equation has no real roots");
@@ -43,34 +41,14 @@ int main()
     return 0;
 }
 
-double input_a()
+double input_coef(char name)
 {
-    double a = 0;
+    double coef = 0;
 
-    printf("Put \"a\" here:");
-    scanf("%lg", &a);
+    printf("Put \"%c\" here:", name);
+    scanf("%lg", &coef);
 
-    return a;
-}
-
-double input_b()
-{
-    double b = 0;
-
-    printf("Put \"b\" here:");
-    scanf("%lg", &b);
-
-    return b;
-}
-
-double input_c()
-{
-    double c = 0;
-
-    printf("Put \"c\" here:");
-    scanf("%lg", &c);
-
-    return c;
+    return coef;
 }
 
 int solve_quadr_equation(const double c, const double b, const double a, double* x1, double* x2) {
@@ -97,11 +75,12 @@ int solve_quadr_equation(const double c, const double b, const double a, double*
     else
     {
         double d = b * b - 4.0 * a * c;
-        if (d < 0)
+        if (isZero(d))
         {
             return NullSolves;
+            *x1 = *x2 = (-b / (2.0 * a));
         }
-        else if (d > 0)
+        else if (d > EPS)
         {
             double sqd = sqrt(d);
             *x1 = (-b + sqd) / (2.0 * a);
@@ -111,8 +90,7 @@ int solve_quadr_equation(const double c, const double b, const double a, double*
         }
         else
         {
-            *x1 = *x2 = (-b / (2.0 * a));
-            return OneSolve;
+            return NullSolves;
         }
     }
 }

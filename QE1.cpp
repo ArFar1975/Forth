@@ -11,9 +11,9 @@ int solve_quadr_equation(double a, double b, double c, double* x1, double* x2);
 int solve_lin_equation(double b, double c, double* x1, double* x2);
 
 double input_coef(char name);
+void output_answer();
 bool isZero(double number);
 void greet();
-void output_answer();
 //void kill_infinity();
 
 int main()
@@ -102,23 +102,19 @@ void output_answer()
     switch(solve_quadr_equation(input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2))
     {
         case NullSolves:
-            printf("This equation has no real roots");
+            printf("\nThis equation has no real roots");
             break;
         case OneSolve:
-            printf("x = %g\n", x1);
+            printf("\nx = %g\n", x1);
             break;
         case TwoSolves:
-            printf("x1 = %g\n", x1);
+            printf("\nx1 = %g\n", x1);
             printf("x2 = %g\n", x2);
             break;
         case InfSolves:
-            printf("This equation has infinity roots!");
+            printf("\nThis equation has infinity roots!");
             break;
         default:
             break;
     }
 }
-/*void kill_infinity()
-{
-    while(getchar() != '\n') {}
-} */

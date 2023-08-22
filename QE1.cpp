@@ -13,32 +13,14 @@ int solve_lin_equation(double b, double c, double* x1, double* x2);
 double input_coef(char name);
 bool isZero(double number);
 void greet();
+void output_answer();
 //void kill_infinity();
 
 int main()
 {
     greet();
 
-    double x1 = 0, x2 = 0;
-
-    switch(solve_quadr_equation(input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2))
-    {
-        case NullSolves:
-            printf("This equation has no real roots");
-            break;
-        case OneSolve:
-            printf("x = %g\n", x1);
-            break;
-        case TwoSolves:
-            printf("x1 = %g\n", x1);
-            printf("x2 = %g\n", x2);
-            break;
-        case InfSolves:
-            printf("This equation has infinity roots!");
-            break;
-        default:
-            break;
-    }
+    output_answer();
 
     printf("\n\nAugust 2023");
 
@@ -112,6 +94,29 @@ int solve_lin_equation(double b, double c, double* x1, double* x2)
         {
             return NullSolves;
         }
+}
+void output_answer()
+{
+    double x1 = 0, x2 = 0;
+
+    switch(solve_quadr_equation(input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2))
+    {
+        case NullSolves:
+            printf("This equation has no real roots");
+            break;
+        case OneSolve:
+            printf("x = %g\n", x1);
+            break;
+        case TwoSolves:
+            printf("x1 = %g\n", x1);
+            printf("x2 = %g\n", x2);
+            break;
+        case InfSolves:
+            printf("This equation has infinity roots!");
+            break;
+        default:
+            break;
+    }
 }
 /*void kill_infinity()
 {

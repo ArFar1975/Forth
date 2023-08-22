@@ -1,6 +1,10 @@
 #include <TXLib.h>
 
 const double EPS = 0.1e-36;
+const int NullSolves = 0;
+const int OneSolve = 1;
+const int TwoSolves = 2;
+const int InfSolves = 3;
 
 int solve_quadr_equation(double a, double b, double c, double* x1, double* x2);
 double input_a();
@@ -17,17 +21,17 @@ int main()
 
     switch(solve_quadr_equation(input_c(), input_b(), input_a(), &x1, &x2))
     {
-        case 0:
+        case NullSolves:
             printf("This equation has no real roots");
             break;
-        case 1:
+        case OneSolve:
             printf("x = %g\n", x1);
             break;
-        case 2:
+        case TwoSolves:
             printf("x1 = %g\n", x1);
             printf("x2 = %g\n", x2);
             break;
-        case 3:
+        case InfSolves:
             printf("This equation has infinity roots!");
             break;
         default:
@@ -79,15 +83,15 @@ int solve_quadr_equation(const double c, const double b, const double a, double*
         {
             *x1 = *x2 = -c / b;
 
-            return 1;
+            return OneSolve;
         }
         else if (isZero(b) && isZero(c))
         {
-            return 3;
+            return InfSolves;
         }
         else
         {
-            return 0;
+            return NullSolves;
         }
     }
     else
@@ -95,7 +99,7 @@ int solve_quadr_equation(const double c, const double b, const double a, double*
         double d = b * b - 4.0 * a * c;
         if (d < 0)
         {
-            return 0;
+            return NullSolves;
         }
         else if (d > 0)
         {
@@ -103,12 +107,12 @@ int solve_quadr_equation(const double c, const double b, const double a, double*
             *x1 = (-b + sqd) / (2.0 * a);
             *x2 = (-b - sqd) / (2.0 * a);
 
-            return 2;
+            return TwoSolves;
         }
         else
         {
             *x1 = *x2 = (-b / (2.0 * a));
-            return 1;
+            return OneSolve;
         }
     }
 }

@@ -28,7 +28,7 @@ int main()
 
 double agetter()
 {
-    double a;
+    double a = 0;
     do {
         printf("Put \"a\" here:");
         scanf("%lf", &a);
@@ -40,7 +40,7 @@ double agetter()
 }
 
 double bgetter() {
-    double b;
+    double b = 0;
     printf("Put \"b\" here:");
     scanf("%lf", &b);
 
@@ -49,7 +49,7 @@ double bgetter() {
 
 double cgetter()
 {
-    double c;
+    double c = 0;
     printf("Put \"c\" here:");
     scanf("%lf", &c);
 

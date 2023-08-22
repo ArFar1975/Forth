@@ -1,12 +1,11 @@
 #include <TXLib.h>
-#define ESP 0.1e-36
 
-enum SType{NullSolves, OneSolves, TwoSolves, InfSolves};
+const double EPS = 0.1e-36;
 
-SType sqsolver(double a, double b, double c, double* x1, double* x2);
-double agetter();
-double bgetter();
-double cgetter();
+int solve_quadr_equation(double a, double b, double c, double* x1, double* x2);
+double a_input();
+double b_input();
+double c_input();
 bool isZero(double);
 
 int main()
@@ -15,18 +14,18 @@ int main()
 
     double x1 = 0, x2 = 0;
 
-    switch(sqsolver(cgetter(), bgetter(), agetter(), &x1, &x2)) {
-    case NullSolves:
+    switch(solve_quadr_equation(c_input(), b_input(), a_input(), &x1, &x2)) {
+    case 0:
         printf("This equation has no real roots");
         break;
-    case OneSolves:
+    case 1:
         printf("x = %g\n", x1);
         break;
-    case TwoSolves:
+    case 2:
         printf("x1 = %g\n", x1);
         printf("x2 = %g\n", x2);
         break;
-    case InfSolves:
+    case 3:
         printf("This equation has infinity roots!");
         break;
     default:
@@ -38,7 +37,7 @@ int main()
     return 0;
 }
 
-double agetter() {
+double a_input() {
     double a = 0;
     printf("Put \"a\" here:");
     scanf("%lg", &a);
@@ -46,7 +45,7 @@ double agetter() {
     return a;
 }
 
-double bgetter() {
+double b_input() {
     double b = 0;
     printf("Put \"b\" here:");
     scanf("%lg", &b);
@@ -54,7 +53,7 @@ double bgetter() {
     return b;
 }
 
-double cgetter()
+double c_input()
 {
     double c = 0;
     printf("Put \"c\" here:");
@@ -62,21 +61,21 @@ double cgetter()
 
     return c;
 }
-SType sqsolver(const double c, const double b, const double a, double* x1, double* x2) {
+int solve_quadr_equation(const double c, const double b, const double a, double* x1, double* x2) {
     if (isZero(a)) {
         printf("\aFor a = 0 , this equation is not a quadratic equation!\n");
         printf("But we can solve it special for you ;)\n");
         if (isZero(b) == 0) {
             *x1 = *x2 = -c / b;
-            return OneSolves;
+            return 1;
         }
         else if (isZero(b) && isZero(c)) {
 
-            return InfSolves;
+            return 3;
         }
         else {
 
-            return NullSolves;
+            return 0;
         }
     }
     else {
@@ -84,7 +83,7 @@ SType sqsolver(const double c, const double b, const double a, double* x1, doubl
         d = b*b - 4.0*a*c;
         if (d < 0) {
 
-            return NullSolves;
+            return 0;
             }
         else if (d > 0) {
             double sqd = 0;
@@ -92,18 +91,18 @@ SType sqsolver(const double c, const double b, const double a, double* x1, doubl
             *x1 = (-b + sqd) / (2.0*a);
             *x2 = (-b - sqd) / (2.0*a);
 
-            return TwoSolves;
+            return 2;
         }
         else {
             *x1 = *x2 = (-b/(2.0*a));
 
-            return OneSolves;
+            return 1;
         }
     }
 }
 bool isZero(double r) {
-    if (fabs(r) < ESP)
-        return OneSolves;
+    if (fabs(r) < EPS)
+        return 1;
     else
-        return NullSolves;
+        return 0;
 }

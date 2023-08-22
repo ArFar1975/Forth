@@ -3,16 +3,18 @@
 
 enum SType{NullSolves, OneSolves, TwoSolves, InfSolves};
 
+SType sqsolver(double a, double b, double c, double* x1, double* x2);
 double agetter();
 double bgetter();
 double cgetter();
-SType sqsolver(double a, double b, double c, double* x1, double* x2);
 bool isZero(double);
 
 int main()
 {
     printf("Hello! This program can solve quadratic equations:\na*x^2 + b*x + c = 0\n");
+
     double x1 = 0, x2 = 0;
+
     switch(sqsolver(cgetter(), bgetter(), agetter(), &x1, &x2)) {
     case NullSolves:
         printf("This equation has no real roots");
@@ -32,6 +34,7 @@ int main()
     }
 
     printf("\n\n(c) ArFar, August 2023");
+
     return 0;
 }
 
@@ -61,20 +64,20 @@ double cgetter()
 }
 SType sqsolver(const double c, const double b, const double a, double* x1, double* x2) {
     if (isZero(a)) {
-            printf("\aFor a = 0 , this equation is not a quadratic equation!\n");
-            printf("But we can solve it special for you ;)\n");
-            if (isZero(b) == 0) {
-                *x1 = *x2 = -c / b;
-                return OneSolves;
-            }
-            else if (isZero(b) && isZero(c)) {
+        printf("\aFor a = 0 , this equation is not a quadratic equation!\n");
+        printf("But we can solve it special for you ;)\n");
+        if (isZero(b) == 0) {
+            *x1 = *x2 = -c / b;
+            return OneSolves;
+        }
+        else if (isZero(b) && isZero(c)) {
 
-                return InfSolves;
-            }
-            else {
+            return InfSolves;
+        }
+        else {
 
-                return NullSolves;
-            }
+            return NullSolves;
+        }
     }
     else {
         double d;

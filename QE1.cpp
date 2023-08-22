@@ -7,6 +7,7 @@ double a_input();
 double b_input();
 double c_input();
 bool isZero(double);
+void kill_infinity();
 
 int main()
 {
@@ -39,25 +40,42 @@ int main()
 
 double a_input() {
     double a = 0;
+    int i = 3;
+    do {
     printf("Put \"a\" here:");
-    scanf("%lg", &a);
+    i = scanf("%lg", &a);
+    kill_infinity();
+    if (i < 1)
+        printf("\aUncorrect! Try again!\n");
+    } while (i < 1);
 
     return a;
 }
 
 double b_input() {
     double b = 0;
+    int i = 3;
+    do {
     printf("Put \"b\" here:");
-    scanf("%lg", &b);
+    i = scanf("%lg", &b);
+    kill_infinity();
+    if (i < 1)
+        printf("\aUncorrect! Try again!\n");
+    } while (i < 1);
 
     return b;
 }
 
-double c_input()
-{
+double c_input() {
     double c = 0;
+    int i = 3;
+    do {
     printf("Put \"c\" here:");
-    scanf("%lg", &c);
+    i = scanf("%lg", &c);
+    if (i < 1)
+        printf("\aUncorrect! Try again!\n");
+    kill_infinity();
+    } while (i < 1);
 
     return c;
 }
@@ -105,4 +123,7 @@ bool isZero(double r) {
         return 1;
     else
         return 0;
+}
+void kill_infinity() {
+    while(getchar() != '\n') {}
 }

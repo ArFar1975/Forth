@@ -1,5 +1,6 @@
 #include <TXLib.h>
 #include "greeter.h"
+
 const double EPS = 0.1e-36;
 
 void output_answer();
@@ -32,20 +33,20 @@ void output_answer()
     switch (solve_quadr_equation (input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2) )
     {
         case NullSolves:
-            printf ("\nThis equation has no real roots");
+            printf ("\n" "This equation has no real roots");
             break;
 
         case OneSolve:
-            printf ("\nx = %g\n", x1);
+            printf ("\n"  "x = %g\n", x1);
             break;
 
         case TwoSolves:
-            printf ("\nx1 = %g\n", x1);
-            printf ("x2 = %g\n", x2);
+            printf ("\n" "x1 = %g\n", x1);
+            printf (     "x2 = %g\n", x2);
             break;
 
         case InfSolves:
-            printf ("\nThis equation has infinity roots!");
+            printf ("\n" "This equation has infinity roots!");
             break;
 
         default:
@@ -68,7 +69,7 @@ sType solve_quadr_equation (const double c, const double b, const double a, doub
     if (isZero(a))
     {
         printf ("\a" "For a = 0 , this equation is not a quadratic equation!\n");
-        printf ("But we can solve it special for you, skinny leather bag ;)\n");
+        printf ("But we can solve it special for you, skinny wherd leather bag ;)\n");
 
         return solve_lin_equation(b, c, x1, x2);
     }

@@ -1,6 +1,6 @@
 #include <TXLib.h>
 
-void greet ();
+void greet();
 
 void greet()
 {

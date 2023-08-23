@@ -2,15 +2,17 @@
 #include "greeter.h"
 const double EPS = 0.1e-36;
 
-enum sType{NullSolves, OneSolve, TwoSolves, InfSolves};
-
-sType solve_quadr_equation (double a, double b, double c, double* x1, double* x2);
-sType solve_lin_equation (double b, double c, double* x1, double* x2);
+void output_answer();
 
 double input_coef (char name);
-void output_answer();
+
+enum sType {NullSolves, OneSolve, TwoSolves, InfSolves};
+
+sType solve_quadr_equation (double a, double b, double c, double* x1, double* x2);
+
+sType solve_lin_equation (double b, double c, double* x1, double* x2);
+
 bool isZero (double number);
-//void kill_infinity();
 
 int main()
 {
@@ -21,6 +23,34 @@ int main()
     printf("\n\nAugust 2023");
 
     return 0;
+}
+
+void output_answer()
+{
+    double x1 = 0, x2 = 0;
+
+    switch (solve_quadr_equation (input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2) )
+    {
+        case NullSolves:
+            printf ("\nThis equation has no real roots");
+            break;
+
+        case OneSolve:
+            printf ("\nx = %g\n", x1);
+            break;
+
+        case TwoSolves:
+            printf ("\nx1 = %g\n", x1);
+            printf ("x2 = %g\n", x2);
+            break;
+
+        case InfSolves:
+            printf ("\nThis equation has infinity roots!");
+            break;
+
+        default:
+            break;
+    }
 }
 
 double input_coef (char name)
@@ -37,8 +67,8 @@ sType solve_quadr_equation (const double c, const double b, const double a, doub
 {
     if (isZero(a))
     {
-        printf ("\aFor a = 0 , this equation is not a quadratic equation!\n");
-        printf ("But we can solve it special for you ;)\n");
+        printf ("\a" "For a = 0 , this equation is not a quadratic equation!\n");
+        printf ("But we can solve it special for you, skinny leather bag ;)\n");
 
         return solve_lin_equation(b, c, x1, x2);
     }
@@ -71,11 +101,6 @@ sType solve_quadr_equation (const double c, const double b, const double a, doub
     }
 }
 
-bool isZero(double r)
-{
-    return fabs(r) < EPS;
-}
-
 sType solve_lin_equation (double b, double c, double* x1, double* x2)
 {
         if (isZero(b) == 0)
@@ -84,40 +109,19 @@ sType solve_lin_equation (double b, double c, double* x1, double* x2)
 
             return OneSolve;
         }
+
         else if (isZero(b) && isZero(c))
         {
             return InfSolves;
         }
+
         else
         {
             return NullSolves;
         }
 }
 
-void output_answer()
+bool isZero (double r)
 {
-    double x1 = 0, x2 = 0;
-
-    switch (solve_quadr_equation (input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2) )
-    {
-        case NullSolves:
-            printf ("\nThis equation has no real roots");
-            break;
-
-        case OneSolve:
-            printf ("\nx = %g\n", x1);
-            break;
-
-        case TwoSolves:
-            printf ("\nx1 = %g\n", x1);
-            printf ("x2 = %g\n", x2);
-            break;
-
-        case InfSolves:
-            printf ("\nThis equation has infinity roots!");
-            break;
-
-        default:
-            break;
-    }
+    return fabs(r) < EPS;
 }

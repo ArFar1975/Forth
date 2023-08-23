@@ -1,5 +1,5 @@
 #include <TXLib.h>
-
+#include "greeter.h"
 const double EPS = 0.1e-36;
 
 enum sType{NullSolves, OneSolve, TwoSolves, InfSolves};
@@ -10,7 +10,6 @@ sType solve_lin_equation (double b, double c, double* x1, double* x2);
 double input_coef (char name);
 void output_answer();
 bool isZero (double number);
-void greet ();
 //void kill_infinity();
 
 int main()
@@ -77,10 +76,6 @@ bool isZero(double r)
     return fabs(r) < EPS;
 }
 
-void greet()
-{
-    printf ("Hello! This program can solve quadratic equations:\na*x^2 + b*x + c = 0\n");
-}
 sType solve_lin_equation (double b, double c, double* x1, double* x2)
 {
         if (isZero(b) == 0)

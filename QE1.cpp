@@ -1,48 +1,47 @@
 #include <TXLib.h>
 #include "greeter.h"
+#include "My_math.h"
 
 const double EPS = 0.1e-36;
 
-void output_answer();
-
-double input_coef (char name);
+void ReSHaToR3000();
 
 enum sType {NullSolves, OneSolve, TwoSolves, InfSolves};
 
+double input_coef (char name);
+
 sType solve_quadr_equation (double a, double b, double c, double* x1, double* x2);
-
 sType solve_lin_equation (double b, double c, double* x1, double* x2);
-
-bool isZero (double number);
 
 int main()
 {
     greet();
 
-    output_answer();
+    ReSHaToR3000();
 
     printf("\n\nAugust 2023");
 
     return 0;
 }
 
-void output_answer()
+void ReSHaToR3000()
 {
     double x1 = 0, x2 = 0;
 
-    switch (solve_quadr_equation (input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2) )
+    sType answers = (solve_quadr_equation (input_coef('c'), input_coef('b'), input_coef('a'), &x1, &x2) );
+    switch (answers)
     {
         case NullSolves:
             printf ("\n" "This equation has no real roots");
             break;
 
         case OneSolve:
-            printf ("\n"  "x = %g\n", x1);
+            printf ("\n"  "x = %lg\n", x1);
             break;
 
         case TwoSolves:
-            printf ("\n" "x1 = %g\n", x1);
-            printf (     "x2 = %g\n", x2);
+            printf ("\n" "x1 = %lg\n", x1);
+            printf (     "x2 = %lg\n", x2);
             break;
 
         case InfSolves:
@@ -74,9 +73,35 @@ sType solve_quadr_equation (const double c, const double b, const double a, doub
         return solve_lin_equation(b, c, x1, x2);
     }
 
+    else if (isZero(b) && isZero(a) == 0)
+    {
+        if (c > EPS)
+        {
+            return NullSolves;
+        }
+
+        else
+        {
+            double sqc = sqrt(-c);
+
+            *x1 = sqc;
+            *x2 = -sqc;
+
+            return TwoSolves;
+        }
+    }
+
+    else if (isZero(c) && isZero(b) == 0 && isZero(a) == 0)
+    {
+        *x1 = 0;
+        *x2 = -b / a;
+
+        return TwoSolves;
+    }
+
     else
     {
-        double d = b * b - 4.0 * a * c;
+        double d = power(b, 2) - 4.0 * a * c;
 
         if (isZero(d))
         {
@@ -102,7 +127,7 @@ sType solve_quadr_equation (const double c, const double b, const double a, doub
     }
 }
 
-sType solve_lin_equation (double b, double c, double* x1, double* x2)
+sType solve_lin_equation (const double b, const double c, double* x1, double* x2)
 {
         if (isZero(b) == 0)
         {
@@ -120,9 +145,4 @@ sType solve_lin_equation (double b, double c, double* x1, double* x2)
         {
             return NullSolves;
         }
-}
-
-bool isZero (double r)
-{
-    return fabs(r) < EPS;
 }

@@ -4,7 +4,7 @@ const double EPS = 0.1e-36;
 
 bool isZero (double number);
 
-double power (double pokazatel, unsigned stepen);
+double power (double x, unsigned exp);
 
 //double power(double, int);
 
@@ -15,10 +15,10 @@ bool isZero (double r)
 
 double power (double x, unsigned i)
 {
-    double s = 1;
+    double xpow = 1;
     while (i > 0)
     {
-        s = s * x;
+        s *= xpow;
         --i;
     }
 

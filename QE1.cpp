@@ -21,11 +21,12 @@ int main()
 {
     greet();
 
-    double a = input_coef ('a');
-    double b = input_coef ('b');
-    double c = input_coef ('c');
+    double a = input_coef ('a'),
+           b = input_coef ('b'),
+           c = input_coef ('c');
 
-    double x1 = 0, x2 = 0;
+    double x1 = 0,
+           x2 = 0;
 
     AnswerVar answers = (solve_quadr_equation (a, b, c, &x1, &x2) );
 

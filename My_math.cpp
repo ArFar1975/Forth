@@ -11,13 +11,25 @@ bool isEqually (double x, double y)
     return fabs(x - y) < EPS;
 }
 
-double power (double x, unsigned i)
+double power (double x, int i)
 {
     double s = 1;
-    while (i > 0)
+    if (i > 0)
     {
-        s = s * x;
-        --i;
+        while (i > 0)
+        {
+            s *= x;
+            --i;
+        }
+    }
+
+    else if (i < 0)
+    {
+        while (i < 0)
+        {
+            s /=  x;
+            ++i;
+        }
     }
 
     return s;

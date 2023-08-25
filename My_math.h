@@ -6,7 +6,7 @@ bool isZero (double number);
 
 bool isEqually (double x, double y);
 
-double power (double x, unsigned exp);
+double power (double x, int exp);
 
 //double power(double, int);
 

@@ -6,6 +6,11 @@ bool isZero (double r)
     return fabs(r) < EPS;
 }
 
+bool isEqually (double x, double y)
+{
+    return fabs(x - y) < EPS;
+}
+
 double power (double x, unsigned i)
 {
     double s = 1;
@@ -17,3 +22,4 @@ double power (double x, unsigned i)
 
     return s;
 }
+

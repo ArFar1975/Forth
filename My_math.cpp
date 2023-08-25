@@ -1,5 +1,5 @@
 #include <TXLib.h>
-#include "My_math.h"
+#include "my_math.h"
 
 bool isZero (double r)
 {

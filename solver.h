@@ -1,5 +1,5 @@
 #include "TXLib.h"
-#include "My_math.h"
+#include "my_math.h"
 
 enum AnswerType
 {
@@ -15,4 +15,3 @@ AnswerType solve_lin_equation (double b, double c, double* x);
 double input_coef (char name);
 
 int print_answers (AnswerType, double x1, double x2);
-

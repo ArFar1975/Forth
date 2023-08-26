@@ -1,19 +1,21 @@
 #include "solver.h"
 
-double input_coef (char name)
+double scan_coef (char name)
 {
-    double coef = 0;
+    double coef = NAN;
 
     printf ("Put \"%c\" here:", name);
 
     scanf ("%lg", &coef);
 
+    clearBuff();
+
     return coef;
 }
 
-int print_answers (AnswerType answers, const double x1, const double x2)
+int print_answers (nRoots answer, const double x1, const double x2)
 {
-    switch (answers)
+    switch (answer)
     {
         case ZeroRoots:
             printf ("\n" "This equation has no real roots");
@@ -37,4 +39,9 @@ int print_answers (AnswerType answers, const double x1, const double x2)
     }
 
     return 0;
+}
+
+void clearBuff (void)
+{
+    while ( ( getchar() ) != '\n' );
 }

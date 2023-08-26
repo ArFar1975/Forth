@@ -4,6 +4,6 @@ void greet();
 
 void greet()
 {
-    printf ("\n" "==========================!!!-=ахирвюа=-!!!=========================" "\n");
+    printf ("\n" "==========================!!!-=ахирвюа=-!!!=========================" "\n" "\n");
     printf ("Hello! This program can solve quadratic equations:\na*x^2 + b*x + c = 0\n");
 }

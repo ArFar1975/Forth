@@ -2,7 +2,7 @@
 #include "solver.h"
 
 
-AnswerType solve_quadr_equation (const double a, const double b, const double c, double* x1, double* x2)
+nRoots solve_quadr_equation (const double a, const double b, const double c, double* x1, double* x2)
 {
     if (isZero(a))
     {
@@ -74,7 +74,7 @@ AnswerType solve_quadr_equation (const double a, const double b, const double c,
     }
 }
 
-AnswerType solve_lin_equation (const double b, const double c, double* x)
+nRoots solve_lin_equation (const double b, const double c, double* x)
 {
         if (isZero(b) && isZero(c))
         {

@@ -1,7 +1,7 @@
-#include "TXLib.h"
+#include <TXLib.h>
 #include "my_math.h"
 
-enum AnswerType
+enum nRoots
 {
     ZeroRoots = 0,
     OneRoot   = 1,
@@ -9,9 +9,11 @@ enum AnswerType
     InfRoots  = 3
 };
 
-AnswerType solve_quadr_equation (double a, double b, double c, double* x1, double* x2);
-AnswerType solve_lin_equation (double b, double c, double* x);
+nRoots solve_quadr_equation (double a, double b, double c, double* x1, double* x2);
+nRoots solve_lin_equation (double b, double c, double* x);
 
-double input_coef (char name);
+double scan_coef (char name);
 
-int print_answers (AnswerType, double x1, double x2);
+int print_answers (nRoots, double x1, double x2);
+
+void clearBuff (void);

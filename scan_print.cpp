@@ -34,11 +34,11 @@ int print_answers (nRoots answer, const double x1, const double x2)
             printf ("\n" "This equation has infinity roots!");
             break;
 
-        default:
+        default: // TODO: are you aware of asserts? Is it a good idea to use one here?
             break;
     }
 
-    return 0;
+    return 0; // TODO: Why does it return int, if it's always 0?
 }
 
 void clearBuff (void)

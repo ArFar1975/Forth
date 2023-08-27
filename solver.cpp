@@ -3,7 +3,13 @@
 
 
 nRoots solve_quadr_equation (const double a, const double b, const double c, double* x1, double* x2)
-{
+{ // TODO:                                                                           ^~          ^~
+    //                                     if you decided to use const on every local param, use it 
+    //                                     on these too, be consistent!
+
+
+    // TODO: Can your function correctly behave with NANs or INFs as an input?
+    //       If not, assert, if yes, document.
     if (isZero(a))
     {
         printf ("\a" "For a = 0 , this equation is not a quadratic equation!\n");
@@ -12,9 +18,9 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         return solve_lin_equation(b, c, x1);
     }
 
-    else if (isZero(b))
-    {
-        double p = -c / a;
+    else if (isZero(b)) // TODO: no need for else after return
+    {                   //       (also maybe this case can be extracted too)
+        double p = -c / a; // TODO: rename, you can do better than one-letter name.
 
         if (isZero(p))
         {
@@ -46,8 +52,8 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         return TwoRoots;
     }
 
-    else
-    {
+    else // TODO: no need for else after return
+    {    //       (also maybe this case can be extracted too)
         double d = power(b, 2) - 4.0 * a * c;
 
         if (isZero(d))
@@ -81,7 +87,7 @@ nRoots solve_lin_equation (const double b, const double c, double* x)
             return InfRoots;
         }
 
-        else if (isZero(b) && !isZero(c))
+        else if (isZero(b) && !isZero(c)) // TODO: don't double check for isZero(b), use nested ifs 
         {
             return ZeroRoots;
         }

@@ -3,8 +3,14 @@
 
 
 nRoots solve_quadr_equation (const double a, const double b, const double c, double* x1, double* x2)
-{
-    if (isZero(a))
+{ // TODO:                                                                           ^~          ^~
+    //                                     if you decided to use const on every local param, use it
+    //                                     on these too, be consistent!
+
+
+    // TODO: Can your function correctly behave with NANs or INFs as an input?
+    //       If not, assert, if yes, document.
+    if (isEqual(a, 0))
     {
         printf ("\a" "For a = 0 , this equation is not a quadratic equation!\n");
         printf ("But we can solve it special for you, skinny leather bag ;)\n");
@@ -12,19 +18,20 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         return solve_lin_equation(b, c, x1);
     }
 
-    else if (isZero(b))
-    {
-        double p = -c / a;
+    else if (isEqual(b, 0)) // OK: no need for else after return
+    {                   //       (also maybe this case can be extracted too)
+        double sqr_of_x = -c / a; // OK: rename, you can do better than one-letter name.
 
-        if (isZero(p))
+        if (isEqual(sqr_of_x, 0))
         {
             *x1 = *x2 = 0;
 
             return OneRoot;
         }
-        else if (p > 0)
+
+        else if (sqr_of_x > 0)
         {
-            double sqc = sqrt(p);
+            double sqc = sqrt(sqr_of_x);
 
             *x1 = sqc;
             *x2 = -sqc;
@@ -38,7 +45,7 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         }
     }
 
-    else if (isZero(c))
+    else if (isEqual(c, 0))
     {
         *x1 = 0;
         *x2 = -b / a;
@@ -46,50 +53,46 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         return TwoRoots;
     }
 
+     // OK: no need for else after return
+    //       (also maybe this case can be extracted too)
+    double d = power(b, 2) - 4.0 * a * c;
+
+    if (isEqual(d, 0))
+    {
+        *x1 = *x2 = (-b / (2.0 * a));
+
+        return OneRoot;
+    }
+
+    else if (d > 0)
+    {
+        double sqd = sqrt(d);
+
+        *x1 = (-b + sqd) / (2.0 * a);
+        *x2 = (-b - sqd) / (2.0 * a);
+
+        return TwoRoots;
+    }
+
     else
     {
-        double d = power(b, 2) - 4.0 * a * c;
-
-        if (isZero(d))
-        {
-            *x1 = *x2 = (-b / (2.0 * a));
-
-            return OneRoot;
-        }
-
-        else if (d > 0)
-        {
-            double sqd = sqrt(d);
-
-            *x1 = (-b + sqd) / (2.0 * a);
-            *x2 = (-b - sqd) / (2.0 * a);
-
-            return TwoRoots;
-        }
-
-        else
-        {
-            return ZeroRoots;
-        }
+        return ZeroRoots;
     }
+
 }
 
 nRoots solve_lin_equation (const double b, const double c, double* x)
 {
-        if (isZero(b) && isZero(c))
+        if (isEqual(b, 0) && isEqual(c, 0))
         {
-            return InfRoots;
+            if (isEqual(c, 0))
+                return InfRoots;
+            else
+                return ZeroRoots;
         }
 
-        else if (isZero(b) && !isZero(c))
-        {
-            return ZeroRoots;
-        }
+        *x = -c / b;
 
-        else
-        {
-            *x = -c / b;
+        return OneRoot;
 
-            return OneRoot;
-        }
 }

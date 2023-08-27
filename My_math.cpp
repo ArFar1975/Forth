@@ -1,37 +1,28 @@
 #include <TXLib.h>
 #include "my_math.h"
 
-bool isZero (double r)
+bool isEqual (double num1, double num2)
 {
-    return fabs(r) < EPS;
+    return fabs(num1 - num2) < EPS;
 }
 
-bool isEqually (double x, double y)
+double power (double base, int exp)
 {
-    return fabs(x - y) < EPS;
-}
-
-double power (double x, int i)
-{
-    double s = 1;
-    if (i > 0)
+    double power = 1;
+    // TODO: this if is unnecessary, you have a while inside with same condition
+    while (exp > 0)
     {
-        while (i > 0)
-        {
-            s *= x;
-            --i;
-        }
+        power *= base; // TODO: slow, it's faster to use binary exponentiation
+        --exp;
     }
 
-    else if (i < 0)
+    while (exp < 0)
     {
-        while (i < 0)
-        {
-            s /=  x;
-            ++i;
-        }
+        power /=  base; // TODO: Try to reduce number of divisions to absolute minimum,
+        ++exp;     //       because division is expensive.
     }
 
-    return s;
+
+    return power;
 }
 

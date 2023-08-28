@@ -9,19 +9,23 @@ bool isEqual (double num1, double num2)
 double power (double base, int exp)
 {
     double power = 1;
-    // TODO: this if is unnecessary, you have a while inside with same condition
+
+    bool flag = false;
+
+    if (exp < 0)
+    {
+        exp *= -1;
+        flag = true;
+    }
+
     while (exp > 0)
     {
         power *= base; // TODO: slow, it's faster to use binary exponentiation
-        --exp;
+        --exp;         // ArFar: I promise i am going to read about it, but later
     }
 
-    while (exp < 0)
-    {
-        power /=  base; // TODO: Try to reduce number of divisions to absolute minimum,
-        ++exp;     //       because division is expensive.
-    }
-
+    if (flag == true)
+        power = 1 / power;
 
     return power;
 }

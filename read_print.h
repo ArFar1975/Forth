@@ -4,7 +4,9 @@
 #include <TXLib.h>
 #include "equation_param.h"
 
-double read_coef (char name);
+void read_struct_coeffs (coefficients*);
+
+double read_num (char name);
 
 int print_solutions (nRoots, double x1, double x2);
 

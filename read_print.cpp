@@ -1,6 +1,13 @@
 #include "read_print.h"
 
-double read_coef (char name)
+void read_struct_coeffs (coefficients* Coeffs)
+{
+    Coeffs->a = read_num ('a');
+    Coeffs->b = read_num ('b');
+    Coeffs->c = read_num ('c');
+}
+
+double read_num (char name)
 {
     double coef = NAN;
 

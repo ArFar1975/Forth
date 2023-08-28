@@ -128,7 +128,7 @@
 //           // use something from d.h
 
 //          This kind of machinery is expected to be in every
-//          header you ever write, do you get how it works?)
+//          header you ever write, do you get how it works?) - Now, yes!
 
 #ifndef SOLVER_H
 #define SOLVER_H

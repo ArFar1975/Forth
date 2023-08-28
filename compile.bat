@@ -3,4 +3,7 @@ g++ my_math.cpp -c %DED_FLAGS%
 g++ solver.cpp -c %DED_FLAGS%
 g++ read_print.cpp -c %DED_FLAGS%
 g++ main.cpp -c %DED_FLAGS%
-g++ main.o read_print.o solver.o my_math.o %DED_FLAGS% -o Kvadratka1.exe  
+g++ main.o read_print.o solver.o my_math.o %DED_FLAGS% -o Kvadratka1.exe
+Kvadratka1.exe
+Kvadratka1.exe 
+ls 

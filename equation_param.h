@@ -12,4 +12,10 @@ enum nRoots
     InfRoots  = 3
 };
 
+typedef struct
+    {
+        double a;
+        double b;
+        double c;
+    } coefficients;
 #endif //EQUATION_PARAM_H

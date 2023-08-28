@@ -10,6 +10,7 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
 
     // TODO: Can your function correctly behave with NANs or INFs as an input?
     //       If not, assert, if yes, document.
+
     if (isEqual(a, 0))
     {
         printf ("\a" "For a = 0 , this equation is not a quadratic equation!\n");

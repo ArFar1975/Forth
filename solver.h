@@ -133,16 +133,18 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
+
 #include <TXLib.h>
+#include <assert.h>
+
 #include "my_math.h"
 #include "equation_param.h"
 
 // TODO: Write documentation (look up how to use Doxygen)
+/*
 
-nRoots solve_quadr_equation (double a, double b, double c, double* x1, double* x2);
-nRoots solve_lin_equation (double b, double c, double* x);
-
-// OK: I see where the name comes from (from scanf), but usually when we
-//       take some text from console or file, the more appropriate word is "read"
+*/
+nRoots solve_quadr_equation (const double a, const double b, const double c, double* x1, double* x2);
+nRoots solve_lin_equation (const double b, const double c, double* x);
 
 #endif // SOLVER_H

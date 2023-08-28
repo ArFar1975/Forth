@@ -6,10 +6,12 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
 { // TODO:                                                                           ^~          ^~
     //                                     if you decided to use const on every local param, use it
     //                                     on these too, be consistent!
-
-
-    // TODO: Can your function correctly behave with NANs or INFs as an input?
-    //       If not, assert, if yes, document.
+    assert (a != NAN);
+    assert (b != NAN);
+    assert (c != NAN);
+    assert (a != INFINITY);
+    assert (b != INFINITY);
+    assert (c != INFINITY);
 
     if (isEqual(a, 0))
     {
@@ -19,9 +21,9 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         return solve_lin_equation(b, c, x1);
     }
 
-    else if (isEqual(b, 0)) // OK: no need for else after return
-    {                   //       (also maybe this case can be extracted too)
-        double sqr_of_x = -c / a; // OK: rename, you can do better than one-letter name.
+    else if (isEqual(b, 0))
+    {
+        double sqr_of_x = -c / a;
 
         if (isEqual(sqr_of_x, 0))
         {
@@ -54,8 +56,6 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         return TwoRoots;
     }
 
-     // OK: no need for else after return
-    //       (also maybe this case can be extracted too)
     double d = power(b, 2) - 4.0 * a * c;
 
     if (isEqual(d, 0))

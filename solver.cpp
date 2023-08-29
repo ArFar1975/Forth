@@ -4,12 +4,14 @@
 
 nRoots solve_quadr_equation (const double a, const double b, const double c, double* x1, double* x2)
 {
-    assert (a != NAN);       // read about how to check if double value contains NAN, inf
-    assert (b != NAN);
-    assert (c != NAN);
-    assert (a != INFINITY);
-    assert (b != INFINITY);
-    assert (c != INFINITY);
+    assert (!isnan(a));
+    assert (!isnan(b));
+    assert (!isnan(c));
+    assert (isfinite(a));
+    assert (isfinite(b));
+    assert (isfinite(c));
+    assert (x1);
+    assert (x2);
 
     if (isEqual(a, 0))
     {

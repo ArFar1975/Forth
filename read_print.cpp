@@ -1,8 +1,8 @@
 #include "read_print.h"
 
 void get_coeffs (coefficients* Coeffs)
-{   // TODO asserts NULL
-
+{
+    assert (Coeffs);
     Coeffs->a = read_num ('a');
     Coeffs->b = read_num ('b');
     Coeffs->c = read_num ('c');
@@ -36,7 +36,11 @@ double read_num (char name)
 void print_solutions (nRoots numb_of_roots, const double x1, const double x2)
 {
 
-    // todo CHECK nan and inf
+    assert (!isnan(x1));
+    assert (!isnan(x2));
+    assert (isfinite(x1));
+    assert (isfinite(x2));
+
     switch (numb_of_roots)
     {
         case ZeroRoots:
@@ -64,7 +68,9 @@ void print_solutions (nRoots numb_of_roots, const double x1, const double x2)
 }
 
 bool check_input (char* input)
-{   // TODO  check null pointer
+{
+    assert (input);
+
     unsigned int position = 0, counter = 0;
 
     unsigned int len_in = strlen(input);

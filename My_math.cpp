@@ -18,8 +18,8 @@ double power (double base, int exp)
 
     while (exp > 0)
     {
-        power *= base; // TODO: slow, it's faster to use binary exponentiation
-        --exp;         // ArFar: I promise i am going to read about it, but a little later
+        power *= base;
+        --exp;
     }
 
     return power;

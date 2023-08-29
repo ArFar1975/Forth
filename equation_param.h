@@ -14,9 +14,10 @@ enum nRoots
 
 typedef struct
 {
-        double a;
-        double b;
-        double c;
-} coefficients;
+    double a;
+    double b;
+    double c;
+}
+coefficients;
 
 #endif //EQUATION_PARAM_H

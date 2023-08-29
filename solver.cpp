@@ -3,11 +3,7 @@
 
 
 nRoots solve_quadr_equation (const double a, const double b, const double c, double* x1, double* x2)
-{ // TODO:                                                                           ^~          ^~
-    //                                     if you decided to use const on every local param, use it
-    //                                     on these too, be consistent!
-    // ArFar: I tried some variants [ const double*, double const*, (const double)*].
-    // But my compiler wrote errors. Where, I can read about that in details?
+{
     assert (a != NAN);
     assert (b != NAN);
     assert (c != NAN);

@@ -3,7 +3,7 @@
 
 #include <TXLib.h>
 
-const double EPS = 0.1e-36;
+const double EPS = 1e-6;
 
 bool isEqual (double num1, double num2);
 

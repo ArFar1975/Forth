@@ -18,10 +18,16 @@ double power (double base, int exp)
 
     while (exp > 0)
     {
-        power *= base;
-        --exp;
+        if (exp % 2 == 1)  // OK make comparation with one explicit
+            power *= base;
+
+        base *= base;
+
+        exp /= 2;
     }
 
     return power;
 }
+
+
 

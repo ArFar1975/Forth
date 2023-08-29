@@ -4,7 +4,7 @@
 
 nRoots solve_quadr_equation (const double a, const double b, const double c, double* x1, double* x2)
 {
-    assert (a != NAN);
+    assert (a != NAN);       // read about how to check if double value contains NAN, inf
     assert (b != NAN);
     assert (c != NAN);
     assert (a != INFINITY);
@@ -54,21 +54,21 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         return TwoRoots;
     }
 
-    double d = power (b, 2) - 4.0 * a * c;
+    double discriminant = power (b, 2) - 4.0 * a * c;  // TODO do not use power
 
-    if (isEqual(d, 0))
+    if (isEqual(discriminant, 0))
     {
         *x1 = *x2 = (-b / (2.0 * a));
 
         return OneRoot;
     }
 
-    else if (d > 0)
+    else if (discriminant > 0)
     {
-        double sqd = sqrt(d);
+        double square_root_of_discriminant = sqrt(discriminant);
 
-        *x1 = (-b + sqd) / (2.0 * a);
-        *x2 = (-b - sqd) / (2.0 * a);
+        *x1 = (-b + square_root_of_discriminant) / (2.0 * a);
+        *x2 = (-b - square_root_of_discriminant) / (2.0 * a);
 
         return TwoRoots;
     }
@@ -82,7 +82,7 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
 
 nRoots solve_lin_equation (const double b, const double c, double* x)
 {
-        if (isEqual(b, 0) && isEqual(c, 0))
+        if (isEqual(b, 0))
         {
             if (isEqual(c, 0))
                 return InfRoots;

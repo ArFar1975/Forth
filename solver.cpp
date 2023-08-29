@@ -6,6 +6,8 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
 { // TODO:                                                                           ^~          ^~
     //                                     if you decided to use const on every local param, use it
     //                                     on these too, be consistent!
+    // ArFar: I tried some variants [ const double*, double const*, (const double)*].
+    // But my compiler wrote errors. Where, I can read about that in details?
     assert (a != NAN);
     assert (b != NAN);
     assert (c != NAN);
@@ -56,7 +58,7 @@ nRoots solve_quadr_equation (const double a, const double b, const double c, dou
         return TwoRoots;
     }
 
-    double d = power(b, 2) - 4.0 * a * c;
+    double d = power (b, 2) - 4.0 * a * c;
 
     if (isEqual(d, 0))
     {
@@ -88,6 +90,7 @@ nRoots solve_lin_equation (const double b, const double c, double* x)
         {
             if (isEqual(c, 0))
                 return InfRoots;
+
             else
                 return ZeroRoots;
         }

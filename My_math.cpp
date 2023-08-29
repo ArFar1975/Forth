@@ -1,5 +1,5 @@
 #include <TXLib.h>
-#include "my_math.h"  // 1
+#include "my_math.h"
 
 bool isEqual (double num1, double num2)
 {
@@ -10,22 +10,17 @@ double power (double base, int exp)
 {
     double power = 1;
 
-    bool flag = false;
-
     if (exp < 0)
     {
-        exp *= -1;
-        flag = true;
+        exp = -exp;
+        power = 1.0 / power;
     }
 
     while (exp > 0)
     {
         power *= base; // TODO: slow, it's faster to use binary exponentiation
-        --exp;         // ArFar: I promise i am going to read about it, but later
+        --exp;         // ArFar: I promise i am going to read about it, but a little later
     }
-
-    if (flag == true)
-        power = 1 / power;
 
     return power;
 }

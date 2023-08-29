@@ -1,4 +1,4 @@
-#ifndef MY_MATH_H // 1
+#ifndef MY_MATH_H
 #define MY_MATH_H
 
 #include <TXLib.h>

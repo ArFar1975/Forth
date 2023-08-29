@@ -50,5 +50,5 @@ void print_solutions (nRoots numb_of_roots, const double x1, const double x2)
 
 void clear_input_buffer (void)
 {
-    while ( ( getchar() ) != '\n' );
+    while ( getchar() != '\n' );
 }

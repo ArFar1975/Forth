@@ -24,8 +24,3 @@ int main()
 
     return 0;
 }
-
-// TODO: I think you can do separate compilation, can you write a makefile for it?
-//                          ^
-//                          (meaning compiling to object files first, and then to executable)
-// So, I am doing to try it ;))))
